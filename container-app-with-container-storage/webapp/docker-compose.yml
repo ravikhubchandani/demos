@@ -1,0 +1,14 @@
+version: '3.8'
+
+services:
+  web:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      args:
+        LOG_DIR: "/log-files"  # Argument passed to Dockerfile
+    image: time-recorder:latest
+    ports:
+      - "80:80"
+    volumes:
+      - C:\mnt\files:/log-files
