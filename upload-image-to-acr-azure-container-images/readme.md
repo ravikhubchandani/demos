@@ -9,6 +9,9 @@ For example: az acr login --name ravicontainerimages
 
 # Prepare image tag
 ```
+Bro tip: To view local docker images:
+docker images
+
 docker tag <local-image-name>:<local-image-version> <acr-name>.azurecr.io/<remote-image-name>:<remote-image-version>
 For example: docker tag time-recorder:latest ravicontainerimages.azurecr.io/time-recorder:latest
 ```

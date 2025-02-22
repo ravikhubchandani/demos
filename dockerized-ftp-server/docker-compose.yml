@@ -1,0 +1,15 @@
+version: '3.8'
+
+services:
+  ftp-server:
+    build: .
+    image: ftp-server
+    ports:
+      - "21:21"
+      - "30000-30002:30000-30002"
+    environment:
+      - USERS=one|1234 # username is one and password is 1234
+      - ADDRESS=localhost
+      - MIN_PORT=30000
+      - MAX_PORT=30002
+    restart: unless-stopped
