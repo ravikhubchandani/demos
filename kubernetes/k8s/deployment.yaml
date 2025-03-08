@@ -1,0 +1,39 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: dog-web-app
+spec:
+  replicas: 2  # Start with 2 replicas
+  selector:
+    matchLabels:
+      app: dog-web-app
+  template:
+    metadata:
+      labels:
+        app: dog-web-app
+    spec:
+      containers:
+      - name: dog-web-app
+        image: ravicontainerimages.azurecr.io/dog-web:latest
+        ports:
+        - containerPort: 5000
+        resources:
+          requests:
+            cpu: "250m"
+            memory: "512Mi"
+          limits:
+            cpu: "500m"
+            memory: "1Gi"
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: dog-web-svc
+spec:
+  selector:
+    app: dog-web-app
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 5000
+  type: LoadBalancer
