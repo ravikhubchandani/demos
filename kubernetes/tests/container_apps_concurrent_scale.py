@@ -1,7 +1,7 @@
 import asyncio
 import aiohttp
 
-# Your Flask app URL
+# Your Flask app URL. This is deployed as ContainerApps in Azure.
 URL = "https://dog-web-app.wittycliff-7431e0fb.westeurope.azurecontainerapps.io/dog"
 
 async def fetch_dog_image(session, request_id):
